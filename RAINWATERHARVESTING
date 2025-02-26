@@ -3,21 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Solver</title>
+    <title>QR Code Generator</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        #qrcode {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h2>Enter Data to Generate QR Code</h2>
-    <input type="text" id="userInput" placeholder="Enter your data">
+
+    <h2>QR Code Generator</h2>
+    <p>Enter text or a link to generate a QR code:</p>
+    <input type="text" id="userInput" placeholder="Enter text or URL">
     <button onclick="generateQRCode()">Generate QR Code</button>
+
     <div id="qrcode"></div>
 
     <script>
         function generateQRCode() {
             let inputData = document.getElementById("userInput").value;
+            if (inputData.trim() === "") {
+                alert("Area of roof");
+                return;
+            }
             document.getElementById("qrcode").innerHTML = "";
             new QRCode(document.getElementById("qrcode"), inputData);
         }
     </script>
+
 </body>
 </html>
